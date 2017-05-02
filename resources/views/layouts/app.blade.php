@@ -15,7 +15,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Fonts -->
-    <link href='http://fonts.useso.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    {{--<link href='http://fonts.useso.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>--}}
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -27,18 +27,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Kylin</a>
+            <a class="navbar-brand" href="{{url('/home')}}">Kylin</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="{{url('/admin')}}">后台首页</a></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li><a href="{{url('/admin/comments')}}">管理评论</a></li>
-            </ul>
+            @if(!Auth::guest())
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url('/admin')}}">后台首页</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url('/admin/comments')}}">管理评论</a></li>
+                </ul>
+            @endif
 
             <ul class="nav navbar-nav navbar-right">
+
                 @if (Auth::guest())
                     <li><a href="{{url('/admin/login')}}">登录</a></li>
                     <li><a href="{{url('/register')}}">注册</a></li>
@@ -50,7 +53,7 @@
                                 <a href="{{ url('/admin/logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    Logout
+                                    登出
                                 </a>
 
                                 <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST" style="display: none;">
