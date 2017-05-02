@@ -42,7 +42,6 @@ Route::group(['namespace' => 'Admin','prefix'=>'admin','middleware'=>'auth'],fun
     Route::post('logout', 'Auth\LoginController@logout');
 
     Route::get('/', 'AdminHomeController@index');
-    Route::get('pages/{id}', 'PagesController@show');
 
     Route::resource('pages','PagesController');
     Route::resource('comments','CommentsController');
