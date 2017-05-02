@@ -2,36 +2,49 @@
 
 @section('content')
     <style>
-        .panel {
-            border-radius: 0;
-            box-shadow: none;
-            border: 1px solid #dde2e8;
-            margin-bottom: 20px;
+        .list-group-item:hover{
+            background-color: #f5f5f5;
         }
-    </style>
+        .list-group-item{
+            height: 45px;
+        }
+        .badge{
+            float: right;
+        }
+        .avatar{
+            width: 30px;
+            height: 30px;
+        }
 
+    </style>
 
     <div class="container">
         <div class="row row-offcanvas row-offcanvas-right">
             <div class="col-xs-12 col-sm-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">前台首页</div>
+                    <div class="jscroll">
+                        <div class="panel-body  remove-padding-horizontal">
+                            <ui class="list-group row topic-list">
+                                @foreach($pages as $page)
+                                    <li class="list-group-item">
+                                      <a href="#">
+                                          <img class="avatar" src="http://olt4twnay.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170421142836.jpg">
+                                      </a>
 
-                    <div class="panel-body">
-
-                        @foreach ($pages as $page)
-                            <hr>
-                            <div class="page">
-                                <h4>{{ $page->title }}</h4>
-                                <div class="content">
-                                    <p>
-                                        {{ $page->body }}
-                                    </p>
-                                </div>
+                                      <a href="{{url('pages',$page->id)}}">
+                                            {{$page->title}}
+                                          <span class="badge">8</span>
+                                      </a>
+                                    </li>
+                                @endforeach
+                            </ui>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                               {{$pages}}
                             </div>
-                            <a href="{{ url('/pages/'.$page->id) }}" class="btn btn-success">进入</a>
-                        @endforeach
-
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,7 +67,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="http://d.laravel-china.org/" class="no-pjax" title="Laravel 中文文档">
-                                            <img class="media-object inline-block " src="https://ooo.0o0.ooo/2017/04/24/58fd98732228e.jpg" style="max-width: 24px;max-height: 24px">
+                                            <img class="media-object" src="https://ooo.0o0.ooo/2017/04/24/58fd98732228e.jpg" style="max-width: 24px;max-height: 24px">
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -66,7 +79,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="http://d.laravel-china.org/" class="no-pjax" title="Laravel 中文文档">
-                                            <img class="media-object inline-block " src="https://ooo.0o0.ooo/2017/04/24/58fd98732228e.jpg" style="max-width: 24px;max-height: 24px">
+                                            <img class="media-object" src="https://ooo.0o0.ooo/2017/04/24/58fd98732228e.jpg" style="max-width: 24px;max-height: 24px">
                                         </a>
                                     </div>
                                     <div class="media-body">
@@ -93,6 +106,18 @@
                                 </a>
                             </li>
                         </ul>
+                    </div>
+                </div>
+
+                {{-- 其他模塊--}}
+                <div class="panel panel-default corner-radius" style="color:#a5a5a5">
+                    <div class="panel-body text-center">
+                        <a href="http://estgroupe.com/" style="color:#a5a5a5">
+                            <img src="https://ooo.0o0.ooo/2017/04/24/58fd98732228e.jpg" style="width: 20px;margin-right: 4px;margin-top: -4px;">
+                            <span style="margin-top: 7px;display: inline-block;">
+                              其他板塊
+                           </span>
+                        </a>
                     </div>
                 </div>
             </div>
