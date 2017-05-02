@@ -9,6 +9,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('web.home',['pages' => Page::get()]);
+        return view('web.home',['pages' => Page::paginate(15)]);
     }
 }
