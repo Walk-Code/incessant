@@ -1,8 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <h4>
-        <a href="{{url('/home')}}">返回首页</a>
-    </h4>
     <div class="container">
 
         <div class="blog-header">
